@@ -18,6 +18,9 @@ Plug 'rhysd/vim-clang-format'
 
 " nerd tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 
 " surround vim
 Plug 'tpope/vim-surround'
@@ -58,6 +61,14 @@ Plug 'lokaltog/vim-distinguished'
 Plug 'tikhomirov/vim-glsl'
 
 Plug 'drewtempelmeyer/palenight.vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+
+Plug 'andweeb/presence.nvim'
+
+Plug 'yamatsum/nvim-cursorline'
 
 call plug#end()			
 
@@ -209,21 +220,6 @@ set expandtab
 " numbers
 set number " see the line number column
 
-" Toggle relative numbering, and set to absolute on loss of focus or insert mode
-autocmd InsertEnter * :set nornu
-autocmd InsertLeave * :set rnu
-" we don't want to see relative numbering while debugging
-" debugger uses its own window, so we can disable rnu when source window loses
-" focus
-autocmd BufLeave * :set nornu
-autocmd BufEnter * call SetRNU()
-function! SetRNU()
-    if(mode()!='i')
-        set rnu 
-    endif
-endfunction
-
-
 " ================ Searching ========================
 
 " Ignorecase when searching
@@ -277,7 +273,6 @@ set mat=0
 set laststatus=2
 
 " disable wrapping of long lines into multiple lines
-set nowrap
 
 " history
 set history=1000
@@ -294,7 +289,10 @@ set backspace=indent,eol,start
 noremap <leader><CR> :silent !gnome-terminal<CR>
 
 "disable preview window
-set completeopt-=preview
+"set completeopt-=preview
+
+"automaticlaly change dir on file open
+set autochdir
 
 
 " ================ Plugins ==========================
@@ -363,11 +361,14 @@ set guioptions-=e  " Don't use GUI tabline
 " ctrl+n open/closes nerd tree
 noremap <C-n> :NERDTreeToggle<CR>
 
+" ctrl+t focus on nerd tree window
+noremap <F1> :NERDTreeFocus<CR>
+
 " quit nerd tree on file open
-let g:NERDTreeQuitOnOpen = 1
+" let g:NERDTreeQuitOnOpen = 1
 
 " show nerd tree always on the right instead on the left
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 
 " ################ UltiSnips ########################
 
@@ -395,23 +396,6 @@ let g:UltiSnipsUsePythonVersion = 3
 " the 'completion suggestions menu' with ctrl+k and ctrl+l
 "inoremap <C-k> <Down>
 "inoremap <C-l> <Up>
-
-
-" ################ YouCompleteMe ####################
-
-let g:ycm_show_diagnostics_ui = 0
-
-let g:ycm_key_list_select_completion = ['<C-k>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-l>', '<Up>']
-let g:SuperTabDefaulCompletionType = '<C-k>'
-
-" disable annoying ycm confirmation
-let g:ycm_confirm_extra_conf = 0
-
-" add path to ycm_extra_conf.py (you could also copy the file in the home folder)
-" delete '...98' argument from .ycm_extra_conf.py, otherwise syntastic does
-" not work properly
-let g:ycm_global_ycm_extra_conf = '/home/jan/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
  
 " ################ Ale ##############################
