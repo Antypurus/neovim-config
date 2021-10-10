@@ -70,6 +70,10 @@ Plug 'andweeb/presence.nvim'
 
 Plug 'yamatsum/nvim-cursorline'
 
+Plug 'wakatime/vim-wakatime'
+
+Plug 'cdelledonne/vim-cmake'
+
 call plug#end()			
 
 
@@ -473,3 +477,10 @@ let g:indexer_disableCtagsWarning = 1
 " TODO: add (cmake) project support
 " TODO: add debugger support
 
+" ################ Build & Run Keybinds For hvrt ##################
+
+nnoremap <C-b> <ESC>:split term://powershell cmake --build .<CR>
+nnoremap <F5> <ESC>:split term://powershell ./Debug/hvrt_renderer.exe<CR>
+nnoremap <F8> <ESC>:split term://powershell ./hvrt_renderer.sln<CR>
+nnoremap <F9> <ESC>:split term://powershell cmake .<CR>
+nnoremap <F10> <ESC>:split term://powershell ./remedy.rdbg<CR>
