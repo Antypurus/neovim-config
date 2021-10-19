@@ -74,8 +74,11 @@ Plug 'wakatime/vim-wakatime'
 
 Plug 'cdelledonne/vim-cmake'
 
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+
 call plug#end()			
 
+let g:lsp_cxx_hl_use_text_props = 1
 
 " ================ Suggestions ======================
  
@@ -296,7 +299,7 @@ noremap <leader><CR> :silent !gnome-terminal<CR>
 "set completeopt-=preview
 
 "automaticlaly change dir on file open
-set autochdir
+"set autochdir
 
 
 " ================ Plugins ==========================
