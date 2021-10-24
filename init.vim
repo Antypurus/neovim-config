@@ -229,8 +229,8 @@ hi EndOfBuffer guibg=NONE ctermbg=NONE
 hi Comment guifg=#34eb95
 
 hi CustomPink guifg=PaleVioletRed
-call matchadd('CustomPink', '\/\/NOTE(Tiago)')
-call matchadd('CustomPink', '\/\/TODO(Tiago)')
+autocmd VimEnter,WinEnter * call matchadd('CustomPink', '\/\/NOTE(Tiago)')
+autocmd VimEnter,WinEnter * call matchadd('CustomPink', '\/\/TODO(Tiago)')
 
 
 " ================ Indentation ======================
