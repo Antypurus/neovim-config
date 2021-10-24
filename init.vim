@@ -52,6 +52,8 @@ Plug 'morhetz/gruvbox'
 Plug 'w0ng/vim-hybrid'
 Plug 'tpope/vim-vividchalk'
 Plug 'lokaltog/vim-distinguished'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhartington/oceanic-next'
 
 " ctrlp
 " TODO: learn
@@ -61,6 +63,8 @@ Plug 'lokaltog/vim-distinguished'
 Plug 'tikhomirov/vim-glsl'
 
 Plug 'drewtempelmeyer/palenight.vim'
+
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -197,19 +201,36 @@ if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
+" Theme
+ syntax enable
+" for vim 7
+ set t_Co=256
+
 if (has("termguicolors"))
   set termguicolors
 endif
- 
-syntax on
-set background=dark
 
-colorscheme palenight
-let g:lightline = { 'colorscheme': 'palenight' }
-let g:airline_theme = "palenight"
+colorscheme OceanicNext
+let g:lightline = { 'colorscheme': 'oceanicnext' }
+let g:airline_theme = "oceanicnext"
  
 " turn on italics
-let g:palenight_terminal_italics=1
+" let g:palenight_terminal_italics=1
+
+syntax on
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+
+hi Comment guifg=#34eb95
+
+hi CustomPink guifg=PaleVioletRed
+call matchadd('CustomPink', '\/\/NOTE(Tiago)')
+call matchadd('CustomPink', '\/\/TODO(Tiago)')
 
 
 " ================ Indentation ======================
@@ -333,7 +354,7 @@ noremap <leader><CR> :silent !gnome-terminal<CR>
  
 " # lightline
  let g:lightline = {
-  \   'colorscheme': 'palenight',
+  \   'colorscheme': 'selenized_black',
   \   'active': {
   \     'left':[ [ 'mode', 'paste' ],
   \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
