@@ -193,6 +193,10 @@ nnoremap <S-Tab> <<_
 vnoremap <Tab> >>_
 vnoremap <S-Tab> <<_
 
+" swap lines of code
+:nnoremap <A-Up> <Up>ddp<Up>
+:nnoremap <A-Down> ddp
+
 " ================ Visualization ====================
  
 " enable true colors
@@ -221,10 +225,10 @@ syntax on
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 
-" hi Normal guibg=NONE ctermbg=NONE
-" hi LineNr guibg=NONE ctermbg=NONE
-" hi SignColumn guibg=NONE ctermbg=NONE
-" hi EndOfBuffer guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 hi Comment guifg=#34eb95
 
