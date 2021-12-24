@@ -80,6 +80,9 @@ Plug 'cdelledonne/vim-cmake'
 
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
+Plug 'MunifTanjim/nui.nvim'
+Plug 'wthollingsworth/pomodoro.nvim'
+
 call plug#end()			
 
 let g:lsp_cxx_hl_use_text_props = 1
