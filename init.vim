@@ -75,14 +75,11 @@ Plug 'andweeb/presence.nvim'
 
 " Plug 'yamatsum/nvim-cursorline'
 
-Plug 'wakatime/vim-wakatime'
-
 Plug 'cdelledonne/vim-cmake'
 
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
-Plug 'MunifTanjim/nui.nvim'
-Plug 'wthollingsworth/pomodoro.nvim'
+Plug 'tricktux/pomodoro.vim'
 
 call plug#end()			
 
@@ -449,8 +446,8 @@ require('lualine').setup {
         end,
       },
     },
-    lualine_c = { 'filename', require('pomodoro').statusline() },
-    lualine_x = {},
+    lualine_c = {},
+    lualine_x = { '%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#' },
     lualine_y = { search_result, 'filetype' },
     lualine_z = { '%l:%c', '%p%%/%L' },
   },
@@ -785,3 +782,17 @@ nnoremap <F5> <ESC>:split term://powershell ./Debug/hvrt_renderer.exe<CR>
 nnoremap <F8> <ESC>:split term://powershell ./hvrt_renderer.sln<CR>
 nnoremap <F9> <ESC>:split term://powershell cmake .<CR>
 nnoremap <F10> <ESC>:split term://powershell ./remedy.rdbg<CR>
+
+" ###################### Pomodoro ################################
+" Duration of a pomodoro in minutes (default: 25)
+let g:pomodoro_time_work = 25
+
+" Duration of a break in minutes (default: 5)
+let g:pomodoro_time_slack = 5 
+
+" Log completed pomodoros, 0 = False, 1 = True (default: 0)
+let g:pomodoro_do_log = 0 
+
+" Path to the pomodoro log file (default: /tmp/pomodoro.log)
+let g:pomodoro_log_file = "/tmp/pomodoro.log" 
+
