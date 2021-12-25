@@ -449,13 +449,12 @@ require('lualine').setup {
         end,
       },
     },
-    lualine_c = {},
+    lualine_c = { 'filename', require('pomodoro').statusline() },
     lualine_x = {},
     lualine_y = { search_result, 'filetype' },
     lualine_z = { '%l:%c', '%p%%/%L' },
   },
   inactive_sections = {
-    lualine_c = { '%f %y %m' },
     lualine_x = {},
   },
 }
