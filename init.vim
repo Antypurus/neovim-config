@@ -2,7 +2,10 @@
 " | | '_ \| | __\ \ / / | '_ ` _ \ 
 " | | | | | | |_ \ V /| | | | | | |
 " |_|_| |_|_|\__(_)_/ |_|_| |_| |_|
- 
+
+let g:python3_host_prog='C:/Program Files/Python310/python.exe'
+let g:python_host_prog='C:/Python27/python.exe'
+
 " ==================== VIM PLUG ==================
 
 call plug#begin('~/.vim/plugged')
@@ -33,7 +36,8 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 
 " enhanced highlight
-Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " ctags indexer
 Plug 'vim-scripts/DfrankUtil'
@@ -73,7 +77,7 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 Plug 'andweeb/presence.nvim'
 
-" Plug 'yamatsum/nvim-cursorline'
+Plug 'yamatsum/nvim-cursorline'
 
 Plug 'cdelledonne/vim-cmake'
 
@@ -92,6 +96,37 @@ set path+=**
 set wildmenu
 set showcmd
 
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    custom_captures = {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      ["foo.bar"] = "Identifier",
+    },
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " ================ File management ==================
  
@@ -447,7 +482,7 @@ require('lualine').setup {
       },
     },
     lualine_c = {},
-    lualine_x = { '%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#' },
+    lualine_x = { '%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#', diagnostics_color = { error = { bg = colors.red, fg = colors.white }} },
     lualine_y = { search_result, 'filetype' },
     lualine_z = { '%l:%c', '%p%%/%L' },
   },
@@ -785,7 +820,7 @@ nnoremap <F10> <ESC>:split term://powershell ./remedy.rdbg<CR>
 
 " ###################### Pomodoro ################################
 " Duration of a pomodoro in minutes (default: 25)
-let g:pomodoro_time_work = 25
+let g:pomodoro_time_work = 1
 
 " Duration of a break in minutes (default: 5)
 let g:pomodoro_time_slack = 5 
@@ -794,5 +829,5 @@ let g:pomodoro_time_slack = 5
 let g:pomodoro_do_log = 0 
 
 " Path to the pomodoro log file (default: /tmp/pomodoro.log)
-let g:pomodoro_log_file = "/tmp/pomodoro.log" 
+let g:pomodoro_log_file = "C:/Users/Antypurus/AppData/Local/nvim/pomodoro.log" 
 
