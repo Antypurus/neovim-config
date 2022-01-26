@@ -810,14 +810,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" ################ Build & Run Keybinds For hvrt ##################
-
-nnoremap <C-b> <ESC>:split term://powershell cmake --build .<CR>
-nnoremap <F5> <ESC>:split term://powershell ./Debug/hvrt_renderer.exe<CR>
-nnoremap <F8> <ESC>:split term://powershell ./hvrt_renderer.sln<CR>
-nnoremap <F9> <ESC>:split term://powershell cmake .<CR>
-nnoremap <F10> <ESC>:split term://powershell ./remedy.rdbg<CR>
-
 " ###################### Pomodoro ################################
 " Duration of a pomodoro in minutes (default: 25)
 let g:pomodoro_time_work = 1
@@ -831,3 +823,19 @@ let g:pomodoro_do_log = 0
 " Path to the pomodoro log file (default: /tmp/pomodoro.log)
 let g:pomodoro_log_file = "C:/Users/Antypurus/AppData/Local/nvim/pomodoro.log" 
 
+" ################## My mappings ########################
+" CTRL-C to copy (visual mode)
+vmap <C-c> y
+" CTRL-X to cut (visual mode)
+vmap <C-x> x
+" CTRL-V to paste (insert mode)
+imap <C-v> <esc>P
+
+imap <A-t> //TODO(Tiago):
+nmap <A-t> i//TODO(Tiago):
+imap <A-n> //NOTE(Tiago):
+nmap <A-n> i//NOTE(Tiago):
+
+set exrc
+
+autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
