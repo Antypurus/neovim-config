@@ -118,9 +118,6 @@ require'nvim-treesitter.configs'.setup {
       scope_incremental = "grc",
       node_decremental = "grm",
     },
-  },
-  indent = {
-    enable = true
   }
 }
 EOF
@@ -275,11 +272,12 @@ autocmd VimEnter,WinEnter * call matchadd('CustomPink', '\/\/TODO(Tiago)')
 
 " ================ Indentation ======================
 
-set autoindent
-set smartindent
-set shiftwidth=4
+filetype plugin indent on
+" show existing tab with 4 spaces width
 set tabstop=4
-set smarttab
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
 set expandtab
 
 
@@ -835,6 +833,9 @@ imap <A-t> //TODO(Tiago):
 nmap <A-t> i//TODO(Tiago):
 imap <A-n> //NOTE(Tiago):
 nmap <A-n> i//NOTE(Tiago):
+
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
 
 set exrc
 
