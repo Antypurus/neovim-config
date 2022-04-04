@@ -525,7 +525,9 @@ END
 " ################ NERDTree #########################
  
 " shift+i (show hidden files)
- 
+" show hidden files and holder by default
+let NERDTreeShowHidden=1
+
 " ctrl+n open/closes nerd tree
 noremap <C-n> :NERDTreeToggle<CR>
 
