@@ -60,9 +60,7 @@ Plug 'tpope/vim-vividchalk'
 Plug 'lokaltog/vim-distinguished'
 Plug 'mhartington/oceanic-next'
 
-" ctrlp
-" TODO: learn
-" Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " glsl color
 Plug 'tikhomirov/vim-glsl'
