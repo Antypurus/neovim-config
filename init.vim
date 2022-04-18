@@ -61,6 +61,9 @@ Plug 'lokaltog/vim-distinguished'
 Plug 'mhartington/oceanic-next'
 
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " glsl color
 Plug 'tikhomirov/vim-glsl'
@@ -87,8 +90,24 @@ call plug#end()
 
 let g:lsp_cxx_hl_use_text_props = 1
 
+" ================ telescope =======================
+lua <<EOF
+require('telescope').setup {
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+require('telescope').load_extension('fzf')
+EOF
+
 " ================ Suggestions ======================
- 
+
 " show wild menu (menu of suggestions) when typing commands in command mode
 set path+=**
 set wildmenu
@@ -836,6 +855,9 @@ nmap <A-n> i//NOTE(Tiago):
 
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
+
+nmap <c-f> :Telescope live_grep<CR>
+imap <c-f> <Esc>:Telescope live_grep<CR>
 
 set exrc
 
