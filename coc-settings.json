@@ -1,4 +1,6 @@
 {
     "clangd.semanticHighlighting": false,
-    "clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\13.0.0\\clangd_13.0.0\\bin\\clangd.exe"
+    "clangd.enabled": true,
+    "clangd.inlayHints.enable":true,
+    "clangd.fallbackFlags": ["C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IC:/Users/Antypurus/Desktop/HVRTRenderer/./src -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -std=gnu++20"]
 }
