@@ -106,12 +106,19 @@ require('telescope').setup {
 require('telescope').load_extension('fzf')
 EOF
 
+" ================ ctrl-p ==========================
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
 " ================ Suggestions ======================
 
 " show wild menu (menu of suggestions) when typing commands in command mode
 set path+=**
 set wildmenu
 set showcmd
+set mouse=a
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
