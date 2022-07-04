@@ -86,6 +86,8 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 Plug 'tricktux/pomodoro.vim'
 
+Plug 'mrjones2014/lighthaus.nvim'
+
 call plug#end()			
 
 let g:lsp_cxx_hl_use_text_props = 1
