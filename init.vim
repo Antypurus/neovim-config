@@ -59,6 +59,7 @@ Plug 'w0ng/vim-hybrid'
 Plug 'tpope/vim-vividchalk'
 Plug 'lokaltog/vim-distinguished'
 Plug 'mhartington/oceanic-next'
+Plug 'sainnhe/everforest'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nvim-lua/plenary.nvim'
@@ -87,6 +88,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'tricktux/pomodoro.vim'
 
 Plug 'mrjones2014/lighthaus.nvim'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()			
 
@@ -273,16 +275,14 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme OceanicNext
-let g:lightline = { 'colorscheme': 'oceanicnext' }
-let g:airline_theme = "oceanicnext"
+colorscheme everforest
+let g:lightline = { 'colorscheme': 'everforest' }
+let g:airline_theme = "everforest"
  
 " turn on italics
 " let g:palenight_terminal_italics=1
 
 syntax on
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
 
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
