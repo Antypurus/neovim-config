@@ -60,6 +60,8 @@ Plug 'tpope/vim-vividchalk'
 Plug 'lokaltog/vim-distinguished'
 Plug 'mhartington/oceanic-next'
 Plug 'sainnhe/everforest'
+Plug 'liuchengxu/vista.vim'
+Plug 'bluz71/vim-moonfly-colors'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nvim-lua/plenary.nvim'
@@ -275,9 +277,9 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme everforest
-let g:lightline = { 'colorscheme': 'everforest' }
-let g:airline_theme = "everforest"
+colorscheme moonfly
+let g:lightline = { 'colorscheme': 'moonfly' }
+let g:airline_theme = "moonfly"
  
 " turn on italics
 " let g:palenight_terminal_italics=1
@@ -295,6 +297,15 @@ hi CustomPink guifg=PaleVioletRed
 autocmd VimEnter,WinEnter * call matchadd('CustomPink', '\/\/NOTE(Tiago)')
 autocmd VimEnter,WinEnter * call matchadd('CustomPink', '\/\/TODO(Tiago)')
 
+let g:moonflyCursorColor = v:true
+let g:moonflyNormalFloat = v:true
+let g:moonflyTerminalColors = v:false
+let g:moonflyUndercurls = v:false
+let g:moonflyUnderlineMatchParen = v:true
+let g:moonflyWinSeparator = 2
+set fillchars=horiz:━,horizup:┻,horizdown:┳,vert:┃,vertleft:┨,vertright:┣,verthoriz:╋
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " ================ Indentation ======================
 
@@ -871,3 +882,11 @@ imap <c-f> <Esc>:Telescope live_grep<CR>
 set exrc
 
 autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
+
+" ##################### Trailing Whitespace ##################
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+au BufWinEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
+au BufWinLeave * call clearmatches()
