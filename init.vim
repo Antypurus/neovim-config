@@ -89,6 +89,8 @@ Plug 'tricktux/pomodoro.vim'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'wakatime/vim-wakatime'
+
 call plug#end()			
 
 let g:lsp_cxx_hl_use_text_props = 1
