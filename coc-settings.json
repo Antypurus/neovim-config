@@ -2,5 +2,8 @@
     "clangd.semanticHighlighting": false,
     "clangd.enabled": true,
     "clangd.inlayHints.enable":true,
-    "clangd.fallbackFlags": ["C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IC:/Users/Antypurus/Desktop/HVRTRenderer/./src -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -std=gnu++20"]
+    "clangd.fallbackFlags": [
+      "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IC:/Users/Antypurus/Desktop/HVRTRenderer/./src -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -std=gnu++20"
+    ],
+    "clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\15.0.1\\clangd_15.0.1\\bin\\clangd.exe"
 }
