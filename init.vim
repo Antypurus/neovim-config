@@ -62,6 +62,9 @@ Plug 'mhartington/oceanic-next'
 Plug 'sainnhe/everforest'
 Plug 'liuchengxu/vista.vim'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'sainnhe/sonokai'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'pineapplegiant/spaceduck'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nvim-lua/plenary.nvim'
@@ -93,6 +96,8 @@ Plug 'mrjones2014/lighthaus.nvim'
 Plug 'sheerun/vim-polyglot'
 
 Plug 'wakatime/vim-wakatime'
+
+Plug 'karb94/neoscroll.nvim'
 
 call plug#end()			
 
@@ -281,7 +286,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme moonfly
+colorscheme duskfox
 let g:lightline = { 'colorscheme': 'moonfly' }
 let g:airline_theme = "moonfly"
  
@@ -348,10 +353,10 @@ nnoremap <F3> :set hlsearch!<CR>
 " ================ Performance ======================
 
 " fix slow scrolling that occurs when using mouse and relative numbers
-set lazyredraw
+" set lazyredraw
 " vim timeout (forgot why I need this or if I do at all)
-set ttyfast
-set ttimeoutlen=10
+" set ttyfast
+" set ttimeoutlen=10
 
 
 " ================ Abbreviations ====================
@@ -530,38 +535,6 @@ require('lualine').setup {
   },
 }
 END
- 
-" ################ Lightline ########################
- 
-" " # lightline
-"  let g:lightline = {
-"   \   'colorscheme': 'selenized_black',
-"   \   'active': {
-"   \     'left':[ [ 'mode', 'paste' ],
-"   \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
-"   \     ]
-"   \   },
-" 	\   'component': {
-" 	\     'lineinfo': '%3l:%-2v',
-" 	\   },
-"   \   'component_function': {
-"   \     'gitbranch': 'fugitive#head',
-"   \   }
-"   \ }
-" let g:lightline.separator = {
-" 	\   'left': '', 'right': ''
-"   \}
-" let g:lightline.subseparator = {
-" 	\   'left': '', 'right': ''
-"   \}
-" 
-" let g:lightline.tabline = {
-"   \   'left': [ ['tabs'] ],
-"   \   'right': [ ['close'] ]
-"   \ }
-" set showtabline=2  " Show tabline
-" set guioptions-=e  " Don't use GUI tabline
-
 
 " ################ NERDTree #########################
  
@@ -711,8 +684,8 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#_select_confirm() : "\<Tab>"
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -882,3 +855,5 @@ au BufWinEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 au BufWinLeave * call clearmatches()
+
+colorscheme duskfox
