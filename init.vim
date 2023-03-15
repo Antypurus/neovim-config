@@ -12,7 +12,7 @@ call plug#begin('~/.vim/plugged')
 
 " fugitive - git support
 Plug 'tpope/vim-fugitive'
- 
+
 " ale - linter / autocompletion / formatter
 Plug 'w0rp/ale'
 
@@ -65,6 +65,7 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'sainnhe/sonokai'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'pineapplegiant/spaceduck'
+Plug 'xiyaowong/nvim-transparent'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nvim-lua/plenary.nvim'
@@ -294,17 +295,6 @@ let g:airline_theme = "moonfly"
 " let g:palenight_terminal_italics=1
 
 syntax on
-
-hi Normal guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE ctermbg=NONE
-hi SignColumn guibg=NONE ctermbg=NONE
-hi EndOfBuffer guibg=NONE ctermbg=NONE
-
-hi Comment guifg=#34eb95
-
-hi CustomPink guifg=PaleVioletRed
-autocmd VimEnter,WinEnter * call matchadd('CustomPink', '\/\/NOTE(Tiago)')
-autocmd VimEnter,WinEnter * call matchadd('CustomPink', '\/\/TODO(Tiago)')
 
 let g:moonflyCursorColor = v:true
 let g:moonflyNormalFloat = v:true
@@ -849,7 +839,6 @@ set exrc
 autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
 
 " ##################### Trailing Whitespace ##################
-highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 au BufWinEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -857,3 +846,17 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 au BufWinLeave * call clearmatches()
 
 colorscheme duskfox
+highlight ExtraWhitespace ctermbg=red guibg=red
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+hi Comment guifg=#34eb95
+hi CustomPink guifg=PaleVioletRed
+au ColorScheme * hi Normal ctermbg=none guibg=none
+let g:transparent_enabled = v:true
+
+autocmd VimEnter,WinEnter * call matchadd('CustomPink', '\/\/NOTE(Tiago)')
+autocmd VimEnter,WinEnter * call matchadd('CustomPink', '\/\/TODO(Tiago)')
+
+
