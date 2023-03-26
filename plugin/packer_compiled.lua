@@ -79,10 +79,30 @@ _G.packer_plugins = {
     path = "C:\\Users\\Antypurus\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nerdtree",
     url = "https://github.com/preservim/nerdtree"
   },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Antypurus\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
+  },
+  ["nvim-transparent"] = {
+    loaded = true,
+    path = "C:\\Users\\Antypurus\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-transparent",
+    url = "https://github.com/xiyaowong/nvim-transparent"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "C:\\Users\\Antypurus\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Antypurus\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  playground = {
+    loaded = true,
+    path = "C:\\Users\\Antypurus\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\playground",
+    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,

@@ -3,17 +3,27 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
+vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>")
+
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-  -- project tree view
-  use 'preservim/nerdtree'
+    -- Color Schemes
+    use 'EdenEast/nightfox.nvim'
+    use 'xiyaowong/nvim-transparent'
 
-  -- fuzzy finder
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+    -- project tree view
+    use 'preservim/nerdtree'
+
+    -- fuzzy finder
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
+    -- treesitter(doest a lot of nice things like highlighting and more)
+    use ({'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }})
+    use 'nvim-treesitter/playground'
 
 end)
