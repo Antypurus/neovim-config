@@ -23,7 +23,15 @@ return require('packer').startup(function(use)
     }
 
     -- treesitter(doest a lot of nice things like highlighting and more)
-    use ({'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }})
+    use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use 'nvim-treesitter/playground'
 
+    -- file anchoring system
+    use 'theprimeagen/harpoon'
+
+    -- undo change management
+    use 'mbbill/undotree'
+
+    -- Git support
+    use 'tpope/vim-fugitive'
 end)

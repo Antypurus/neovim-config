@@ -4,8 +4,8 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 --save file
-vim.keymap.set("n", "<c-s>", ":write<CR>")
-vim.keymap.set("i", "<c-s>", "<Esc>:write<CR>a")
+vim.keymap.set("n", "<c-s>", vim.cmd.write)
+vim.keymap.set("i", "<c-s>", vim.cmd.write)
 
 --window management
 vim.api.nvim_set_keymap("n", "<leader>cc", ":q<CR>", {noremap=true})
