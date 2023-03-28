@@ -43,7 +43,14 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 
 -- clipboard
-vim.api.nvim_set_keymap("n", "<C-c>", "\"+y", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-v>", "\"+p", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-c>", "\"+y", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-x>", "\"+d", { noremap = true })
 vim.api.nvim_set_keymap("i", "<C-v>", "<Esc>\"+pa", { noremap = true })
+
+-- todo & note insertion
+vim.keymap.set("n", "<A-t>", "a//TODO(Tiago):")
+vim.keymap.set("i", "<A-t>", "//TODO(Tiago):")
+vim.keymap.set("n", "<A-n>", "a//NOTE(Tiago):")
+vim.keymap.set("i", "<A-n>", "//NOTE(Tiago):")
+
