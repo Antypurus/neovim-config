@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
 
     -- project tree view
     use 'preservim/nerdtree'
-    use 'Xuyuanp/nerdtree-git-plugin'
+    -- use 'Xuyuanp/nerdtree-git-plugin'
     use 'ryanoasis/vim-devicons'
     use 'PhilRunninger/nerdtree-visual-selection'
 
