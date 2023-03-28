@@ -20,6 +20,12 @@ vim.api.nvim_set_keymap("v", "<A-Up>", ":m '<-2<CR>gv=gv", { noremap = true })
 vim.keymap.set("n", "<A-Up>", "<Up>ddp<Up>")
 vim.keymap.set("n", "<A-Down>", "ddp")
 
+-- indent via Tab
+vim.api.nvim_set_keymap("n", "<Tab>", ">>_", { noremap = true })
+vim.api.nvim_set_keymap("n", "<S-Tab>", "<<_", { noremap = true })
+vim.api.nvim_set_keymap("v", "<Tab>", ">>_", { noremap = true })
+vim.api.nvim_set_keymap("v", "<S-Tab>", "<<_", { noremap = true })
+
 -- paste over token
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
@@ -35,3 +41,9 @@ vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- clipboard
+vim.api.nvim_set_keymap("n", "<C-c>", "\"+y", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-v>", "\"+p", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-x>", "\"+d", { noremap = true })
+vim.api.nvim_set_keymap("i", "<C-v>", "<Esc>\"+pa", { noremap = true })

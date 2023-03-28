@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["a.vim"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/a.vim",
+    url = "https://github.com/vim-scripts/a.vim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -134,6 +139,16 @@ _G.packer_plugins = {
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/nerdtree",
     url = "https://github.com/preservim/nerdtree"
   },
+  ["nerdtree-git-plugin"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin",
+    url = "https://github.com/Xuyuanp/nerdtree-git-plugin"
+  },
+  ["nerdtree-visual-selection"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/nerdtree-visual-selection",
+    url = "https://github.com/PhilRunninger/nerdtree-visual-selection"
+  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
@@ -148,6 +163,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
   },
   ["nvim-transparent"] = {
     loaded = true,
@@ -174,6 +194,11 @@ _G.packer_plugins = {
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["presence.nvim"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/presence.nvim",
+    url = "https://github.com/andweeb/presence.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -184,10 +209,20 @@ _G.packer_plugins = {
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-devicons"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/vim-devicons",
+    url = "https://github.com/ryanoasis/vim-devicons"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-wakatime"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/vim-wakatime",
+    url = "https://github.com/wakatime/vim-wakatime"
   }
 }
 

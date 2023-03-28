@@ -15,15 +15,18 @@ return require('packer').startup(function(use)
 
     -- project tree view
     use 'preservim/nerdtree'
+    use 'Xuyuanp/nerdtree-git-plugin'
+    use 'ryanoasis/vim-devicons'
+    use 'PhilRunninger/nerdtree-visual-selection'
 
     -- fuzzy finder
     use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.1',
-      requires = { {'nvim-lua/plenary.nvim'} }
+        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     -- treesitter(doest a lot of nice things like highlighting and more)
-    use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use 'nvim-treesitter/playground'
 
     -- file anchoring system
@@ -35,27 +38,40 @@ return require('packer').startup(function(use)
     -- Git support
     use 'tpope/vim-fugitive'
 
+    -- surround
+    use 'kylechui/nvim-surround'
+
     -- LSP Zero
     use {
-  	'VonHeikemen/lsp-zero.nvim',
-  	branch = 'v1.x',
-  	requires = {
-    	-- LSP Support
-    	{'neovim/nvim-lspconfig'},             -- Required
-    	{'williamboman/mason.nvim'},           -- Optional
-    	{'williamboman/mason-lspconfig.nvim'}, -- Optional
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },             -- Required
+            { 'williamboman/mason.nvim' },           -- Optional
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-    	-- Autocompletion
-    	{'hrsh7th/nvim-cmp'},         -- Required
-    	{'hrsh7th/cmp-nvim-lsp'},     -- Required
-    	{'hrsh7th/cmp-buffer'},       -- Optional
-    	{'hrsh7th/cmp-path'},         -- Optional
-    	{'saadparwaiz1/cmp_luasnip'}, -- Optional
-    	{'hrsh7th/cmp-nvim-lua'},     -- Optional
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },         -- Required
+            { 'hrsh7th/cmp-nvim-lsp' },     -- Required
+            { 'hrsh7th/cmp-buffer' },       -- Optional
+            { 'hrsh7th/cmp-path' },         -- Optional
+            { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+            { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
-    	-- Snippets
-    	{'L3MON4D3/LuaSnip'},             -- Required
-    	{'rafamadriz/friendly-snippets'}, -- Optional
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },             -- Required
+            { 'rafamadriz/friendly-snippets' }, -- Optional
+        }
     }
-}
+
+    -- A - for switching between source and header files
+    use 'vim-scripts/a.vim'
+
+    -- wakatime
+    use 'wakatime/vim-wakatime'
+
+    -- discord presence
+    use 'andweeb/presence.nvim'
+
 end)
