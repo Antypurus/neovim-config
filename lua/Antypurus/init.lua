@@ -53,6 +53,9 @@ vim.opt.encoding = "utf-8"
 -- clipboard
 vim.opt.clipboard="unnamedplus"
 
+-- load executable files
+vim.opt.exrc = true
+
 -- initialize plenary
 function R(name)
     require("plenary.reload").reload_module(name)

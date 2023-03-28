@@ -25,6 +25,16 @@ return require('packer').startup(function(use)
     use 'ryanoasis/vim-devicons'
     use 'PhilRunninger/nerdtree-visual-selection'
 
+    -- breadcrumb
+    use {
+        "SmiteshP/nvim-navbuddy",
+        requires = {
+            "neovim/nvim-lspconfig",
+            "SmiteshP/nvim-navic",
+            "MunifTanjim/nui.nvim"
+        }
+    }
+
     -- fuzzy finder
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
