@@ -6,3 +6,4 @@ vim.keymap.set("n", "<leader>gca", function()
     commit_command = ":Git commit -am \"" .. commit_message .. "\"<CR>"
     vim.cmd(commit_command)
 end)
+vim.keymap.set("n", "<leader>gps", ":Git push<CR>")
