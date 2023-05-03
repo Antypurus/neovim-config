@@ -31,7 +31,7 @@ vim.opt.wrap = true
 -- long undos with undotree
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv("HOME")
 vim.opt.undofile = true
 
 -- searching
