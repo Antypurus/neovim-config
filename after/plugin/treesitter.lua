@@ -25,7 +25,6 @@ require 'nvim-treesitter.configs'.setup {
 	  "regex",
 	  "yaml",
 	  "vim", 
-	  "help", 
 	  "query" 
   },
 
