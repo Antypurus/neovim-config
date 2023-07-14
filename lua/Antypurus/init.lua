@@ -18,6 +18,11 @@ vim.cmd [[ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c
 vim.cmd [[ autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None ]]
 
+-- highlight current window/pane
+vim.cmd [[
+  autocmd WinEnter * setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+]]
+
 -- indentation
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
