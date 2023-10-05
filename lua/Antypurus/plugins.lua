@@ -16,13 +16,13 @@ return require('packer').startup(function(use)
     -- lualine
     use {
       'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+      -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- project tree view
     use 'preservim/nerdtree'
     -- use 'Xuyuanp/nerdtree-git-plugin'
-    use 'ryanoasis/vim-devicons'
+    -- use 'ryanoasis/vim-devicons'
     use 'PhilRunninger/nerdtree-visual-selection'
 
     -- breadcrumb
@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
 
     -- fuzzy finder
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
