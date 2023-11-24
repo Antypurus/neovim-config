@@ -90,4 +90,11 @@ return require('packer').startup(function(use)
     -- discord presence
     use 'andweeb/presence.nvim'
 
+    -- terminal integration
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup{
+            open_mapping = "<C-\\>"
+        }
+    end}
+
 end)
