@@ -3,8 +3,8 @@ local actions = require('telescope.actions')
 require('telescope').setup{
     defaults = {
         file_ignore_patterns = {
-            "ThirdParty",
-            "build",
+            "ThirdParty/",
+            "build/",
         },
         wrap_results = true,
         prompt_prefix = "",
