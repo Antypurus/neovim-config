@@ -13,11 +13,8 @@ return require('packer').startup(function(use)
     use 'EdenEast/nightfox.nvim'
     use 'xiyaowong/nvim-transparent'
 
-    -- lualine
-    use {
-      'nvim-lualine/lualine.nvim',
-      -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
+    -- status bar
+    use 'windwp/windline.nvim'
 
     -- project tree view
     use 'preservim/nerdtree'
