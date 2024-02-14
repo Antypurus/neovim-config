@@ -50,6 +50,7 @@ return require('packer').startup(function(use)
 
     -- Git support
     use 'tpope/vim-fugitive'
+    use 'lewis6991/gitsigns.nvim'
 
     -- surround
     use 'kylechui/nvim-surround'

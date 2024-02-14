@@ -9,3 +9,5 @@ vim.keymap.set("n", "<leader>gca", function()
     vim.cmd(commit_command)
 end)
 vim.keymap.set("n", "<leader>gps", ":Git push<CR>")
+
+require('gitsigns').setup()
