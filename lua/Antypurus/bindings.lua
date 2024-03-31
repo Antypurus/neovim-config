@@ -57,3 +57,7 @@ vim.keymap.set("i", "<A-n>", "//NOTE(Tiago):")
 -- splits
 vim.keymap.set("n", "<leader>vs", vim.cmd.vsplit)
 vim.keymap.set("n", "<leader>hs", vim.cmd.split)
+
+-- home button handling
+vim.keymap.set("n", "<Home>", "^")
+vim.keymap.set("i", "<Home>", "<Esc>^i")
