@@ -67,6 +67,8 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<Esc>'] = cmp.mapping.abort(),
+        ['<Left>'] = cmp.mapping.abort(),
+        ['<Right>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({
             select = true
         }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -98,9 +100,6 @@ cmp.setup({
     }}),
     formatting = {
         format = lspkind.cmp_format()
-    },
-    experimental = {
-        ghost_text = true
     },
     snippet = {
         expand = function(args)
@@ -146,3 +145,17 @@ require('lspconfig').clangd.setup {
     capabilities = capabilities,
     cmd = {"clangd", "--header-insertion=never"}
 }
+
+
+-- setup rust lsp
+local rt = require("rust-tools")
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})

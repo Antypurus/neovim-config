@@ -13,6 +13,9 @@ return require('packer').startup(function(use)
     use 'EdenEast/nightfox.nvim'
     use 'xiyaowong/nvim-transparent'
     use 'tomasiser/vim-code-dark'
+    use 'sekke276/dark_flat.nvim'
+    use 'm15a/nvim-srcerite'
+    use 'sainnhe/sonokai'
 
     -- status bar
     use 'windwp/windline.nvim'
@@ -61,6 +64,9 @@ return require('packer').startup(function(use)
             open_mapping = "<C-\\>"
         }
     end}
+
+    -- lsps
+    use 'simrat39/rust-tools.nvim'
 
     -- lsp configurator
     use "neovim/nvim-lspconfig"
