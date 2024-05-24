@@ -75,6 +75,18 @@ vim.keymap.set("i", "<A-n>", "//NOTE(Tiago):")
 -- splits
 vim.keymap.set("n", "<leader>vs", vim.cmd.vsplit)
 vim.keymap.set("n", "<leader>hs", vim.cmd.split)
+vim.api.nvim_set_keymap("n", "<S-LEFT><S-LEFT>", "<C-w><Left>", {
+    noremap = true
+})
+vim.api.nvim_set_keymap("n", "<S-RIGHT><S-RIGHT>", "<C-w><Right>", {
+    noremap = true
+})
+vim.api.nvim_set_keymap("n", "<S-UP><S-UP>", "<C-w><Up>", {
+    noremap = true
+})
+vim.api.nvim_set_keymap("n", "<S-DOWN><S-DOWN>", "<C-w><Down>", {
+    noremap = true
+})
 
 -- home button handling
 vim.keymap.set("n", "<Home>", "^")
