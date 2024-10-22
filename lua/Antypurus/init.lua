@@ -2,6 +2,9 @@ require 'Antypurus.bindings'
 require 'Antypurus.plugins'
 require 'Antypurus.color'
 
+-- highlight current line
+vim.opt.cursorline = true
+
 -- line numbers
 vim.opt.nu = true
 -- relative line numbers in normal mode and absolute
@@ -9,7 +12,7 @@ vim.opt.nu = true
 -- easier overall when i need the absolute line number
 vim.cmd [[
     autocmd InsertEnter * :set norelativenumber
-    autocmd InsertLeave * :set relativenumber
+    autocmd InsertLeave * :set norelativenumber
 ]]
 
 -- Triger `autoread` when files changes on disk

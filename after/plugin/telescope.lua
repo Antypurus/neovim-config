@@ -11,6 +11,11 @@ require('telescope').setup{
         prompt_prefix = "",
         path_display = "smart"
     },
+    pickers = {
+        colorscheme = {
+            enable_preview = true
+        }
+    }
 }
 
 vim.keymap.set('n', '<C-p>', function()
