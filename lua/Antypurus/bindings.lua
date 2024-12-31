@@ -91,3 +91,8 @@ vim.api.nvim_set_keymap("n", "<S-DOWN><S-DOWN>", "<C-w><Down>", {
 -- home button handling
 vim.keymap.set("n", "<Home>", "^")
 vim.keymap.set("i", "<Home>", "<Esc>^i")
+
+-- open terminal
+vim.keymap.set("n", "<C-\\>", function()
+    vim.cmd("FloatermToggle")
+end)

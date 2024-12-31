@@ -1,4 +1,4 @@
-vim.g.NERDTreeWinPos = "left"
+vim.g.NERDTreeWinPos = "right"
 vim.g.NERDTreeShowHidden = 1
 
 vim.keymap.set("n", "<c-n>", vim.cmd.NERDTreeToggle)

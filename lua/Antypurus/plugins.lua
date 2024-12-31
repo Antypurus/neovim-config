@@ -16,14 +16,14 @@ return require('packer').startup(function(use)
     use 'sekke276/dark_flat.nvim'
     use 'm15a/nvim-srcerite'
     use 'sainnhe/sonokai'
+    use 'Shatur/neovim-ayu'
 
     -- status bar
     use 'windwp/windline.nvim'
 
     -- project tree view
     use 'preservim/nerdtree'
-    -- use 'Xuyuanp/nerdtree-git-plugin'
-    -- use 'ryanoasis/vim-devicons'
+    use 'ryanoasis/vim-devicons'
     use 'PhilRunninger/nerdtree-visual-selection'
 
     -- fuzzy finder
@@ -64,6 +64,7 @@ return require('packer').startup(function(use)
             open_mapping = "<C-\\>"
         }
     end}
+    use 'voldikss/vim-floaterm'
 
     -- lsps
     use 'simrat39/rust-tools.nvim'
