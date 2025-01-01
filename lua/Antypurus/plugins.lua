@@ -59,19 +59,20 @@ return require('packer').startup(function(use)
     use 'andweeb/presence.nvim'
 
     -- terminal integration
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup{
-            open_mapping = "<C-\\>"
-        }
-    end}
     use 'voldikss/vim-floaterm'
 
     -- lsps
     use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
 
     -- lsp configurator
     use "neovim/nvim-lspconfig"
     use "onsails/lspkind.nvim"
+
+    use({
+        "L3MON4D3/LuaSnip",
+        run = "make install_jsregexp"
+    })
 
     -- autocompletion
     use 'hrsh7th/cmp-nvim-lsp'
@@ -81,5 +82,4 @@ return require('packer').startup(function(use)
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
-
 end)
