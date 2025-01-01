@@ -2,25 +2,14 @@ local cmp = require 'cmp'
 local lspkind = require('lspkind')
 local lspconfig = require('lspconfig')
 
+require("mason").setup()
+
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.clangd.setup {
     capabilities = capabilities,
     cmd = {"clangd", "--header-insertion=never"}
 }
-
--- setup rust lsp
-local rt = require("rust-tools")
-rt.setup({
-    server = {
-        on_attach = function(_, bufnr)
-            -- Hover actions
-            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-            -- Code action groups
-            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-        end,
-    },
-})
 
 -- javascript
 local protocol = require('vim.lsp.protocol')

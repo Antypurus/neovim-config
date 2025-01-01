@@ -67,7 +67,7 @@ return require('packer').startup(function(use)
     use 'voldikss/vim-floaterm'
 
     -- lsps
-    use 'simrat39/rust-tools.nvim'
+    use 'williamboman/mason.nvim'
 
     -- lsp configurator
     use "neovim/nvim-lspconfig"
