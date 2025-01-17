@@ -2,7 +2,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
-    ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd' },
+    ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd', 'ts_ls' },
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({})
@@ -12,7 +12,7 @@ require('mason-lspconfig').setup({
     clangd = function()
         local lspconfig = require('lspconfig')
         lspconfig.clangd.setup {
-            cmd = { "clangd", "--header-insertion=never" },
+            cmd = { "clangd", "--header-insertion=never", "--query-driver=clang", "--experimental-modules-support" },
         }
     end,
 })
