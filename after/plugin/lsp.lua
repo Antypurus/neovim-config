@@ -1,3 +1,18 @@
+vim.cmd("hi NormalFloat guibg=#32302F")
+vim.cmd("hi FloatBorder guibg=#32302F guifg=#F2E2C3")
+local handlers = {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+}
+local win = require('lspconfig.ui.windows')
+local _default_opts = win.default_opts
+
+win.default_opts = function(options)
+    local opts = _default_opts(options)
+    opts.border = 'single'
+    return opts
+end
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here
@@ -12,7 +27,14 @@ require('mason-lspconfig').setup({
     clangd = function()
         local lspconfig = require('lspconfig')
         lspconfig.clangd.setup {
-            cmd = { "clangd", "--header-insertion=never", "--query-driver=clang", "--experimental-modules-support" },
+            filetypes = { "c", "cpp", "proto" },
+            cmd = {
+                "clangd",
+                "--background-index",
+                "--query-driver=clang",
+                "--offset-encoding=utf-16",
+            },
+            handlers = handlers,
         }
     end,
 })
