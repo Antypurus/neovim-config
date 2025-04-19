@@ -23,6 +23,20 @@ return require('packer').startup(function(use)
 
     -- project tree view
     use 'preservim/nerdtree'
+    use 'MunifTanjim/nui.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-tree/nvim-web-devicons'
+    use { "3rd/image.nvim", opts = {} }
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        lazy = false, -- neo-tree will lazily load itself
+        ---@module "neo-tree"
+        ---@type neotree.Config?
+        opts = {
+            -- fill any relevant options here
+        },
+    }
     use 'ryanoasis/vim-devicons'
     use 'PhilRunninger/nerdtree-visual-selection'
 
