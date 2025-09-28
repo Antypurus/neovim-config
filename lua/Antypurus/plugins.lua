@@ -17,6 +17,11 @@ return require('packer').startup(function(use)
     use 'm15a/nvim-srcerite'
     use 'sainnhe/sonokai'
     use 'Shatur/neovim-ayu'
+    use "catppuccin/nvim"
+    use "folke/tokyonight.nvim"
+    use "projekt0n/github-nvim-theme"
+    use "Mofiqul/vscode.nvim"
+    use "scottmckendry/cyberdream.nvim"
 
     -- status bar
     use 'windwp/windline.nvim'
