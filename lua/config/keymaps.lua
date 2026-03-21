@@ -13,12 +13,13 @@ end
 
 function M.setup()
 	-- Clear highlights on search when pressing <Esc> in normal mode
-	--  See `:help hlsearch`
 	vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 	-- Save with Ctrl-s
 	vim.keymap.set("n", "<C-s>", vim.cmd.write)
 	vim.keymap.set("i", "<C-s>", vim.cmd.write)
+
+	-- dynamic config reload
 	vim.keymap.set("n", "<leader>rr", reload_config, { desc = "[R]eload Neovim config" })
 
 	vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
@@ -31,33 +32,29 @@ function M.setup()
 	-- or just use <C-\><C-n> to exit terminal mode
 	vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-	-- Keybinds to make split navigation easier.
-	--  Use CTRL+<hjkl> to switch between windows
-	--
-	--  See `:help wincmd` for a list of all window commands
-	vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-	vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-	vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-	vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-
-	-- split keymaps
-	vim.keymap.set("n", "<leader>vs", vim.cmd.vsplit)
-	vim.keymap.set("n", "<leader>hs", vim.cmd.split)
-	vim.keymap.set("n", "<leader>cc", vim.cmd.quit)
+	-- Split management and navigation
+	vim.keymap.set("n", "<leader>vs", vim.cmd.vsplit, { desc = "Create [V]ertical Split" })
+	vim.keymap.set("n", "<leader>hs", vim.cmd.split, { desc = "Create [H]orizontal Split" })
+	vim.keymap.set("n", "<leader>cc", vim.cmd.quit, { desc = "[C]lose [C]urrent Window" })
 	vim.keymap.set("n", "<S-LEFT><S-LEFT>", "<C-w><Left>")
 	vim.keymap.set("n", "<S-RIGHT><S-RIGHT>", "<C-w><Right>")
 	vim.keymap.set("n", "<S-UP><S-UP>", "<C-w><Up>")
 	vim.keymap.set("n", "<S-DOWN><S-DOWN>", "<C-w><Down>")
 
-	-- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
-	-- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
-	-- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
-	-- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
-	-- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+	-- moving code blocks
+	vim.api.nvim_set_keymap("v", "<A-Down>", ":m '>+1<CR>gv=gv", {
+		noremap = true,
+	})
+	vim.api.nvim_set_keymap("v", "<A-Up>", ":m '<-2<CR>gv=gv", {
+		noremap = true,
+	})
+	vim.keymap.set("n", "<A-Up>", "<Up>ddp<Up>")
+	vim.keymap.set("n", "<A-Down>", "ddp")
 end
 
 function M.setup_telescope(builtin)
 	vim.keymap.set("n", "<C-o>", builtin.git_files, { desc = "Open File" })
+
 	vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 	vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 	vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
@@ -76,13 +73,6 @@ function M.setup_telescope(builtin)
 			previewer = false,
 		}))
 	end, { desc = "[/] Fuzzily search in current buffer" })
-
-	vim.keymap.set("n", "<leader>s/", function()
-		builtin.live_grep({
-			grep_open_files = true,
-			prompt_title = "Live Grep in Open Files",
-		})
-	end, { desc = "[S]earch [/] in Open Files" })
 
 	vim.keymap.set("n", "<leader>sn", function()
 		builtin.find_files({ cwd = vim.fn.stdpath("config") })
