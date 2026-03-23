@@ -1,23 +1,29 @@
 local M = {}
+local keymapper = require("util.map")
 
 local function reload_config()
+	-- clear keybinds
+	require("util.map").clear()
+
+	-- reload modules
 	for name, _ in pairs(package.loaded) do
 		if name:match("^config") then
 			package.loaded[name] = nil
 		end
 	end
 
+	-- reload init.lua
 	dofile(vim.env.MYVIMRC)
 	vim.notify("Neovim configuration reloaded")
 end
 
 function M.setup()
 	-- Clear highlights on search when pressing <Esc> in normal mode
-	vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+	keymapper.map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 	-- Save with Ctrl-s
-	vim.keymap.set("n", "<C-s>", vim.cmd.write)
-	vim.keymap.set("i", "<C-s>", vim.cmd.write)
+	keymapper.map("n", "<C-s>", vim.cmd.write)
+	keymapper.map("i", "<C-s>", vim.cmd.write)
 
 	-- dynamic config reload
 	vim.keymap.set("n", "<leader>rr", reload_config, { desc = "[R]eload Neovim config" })
@@ -81,7 +87,15 @@ end
 
 function M.setup_telescope_lsp(buf, builtin)
 	-- Find references for the word under your cursor.
-	vim.keymap.set("n", "grr", builtin.lsp_references, { buffer = buf, desc = "[G]oto [R]eferences" })
+	vim.keymap.set("n", "<leader>gr", function()
+		builtin.lsp_references({
+			path_display = { "tail" },
+		})
+	end, {
+		buffer = buf,
+		desc = "[G]oto [R]eferences",
+		remap = false,
+	})
 
 	-- Jump to the implementation of the word under your cursor.
 	-- Useful when your language has ways of declaring types without an actual implementation.
@@ -112,9 +126,7 @@ function M.setup_lsp(event)
 		vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 	end
 
-	-- Rename the variable under your cursor.
-	--  Most Language Servers support renaming across files, etc.
-	map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+	vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename Symbol" })
 
 	-- Execute a code action, usually your cursor needs to be on top of an error
 	-- or a suggestion from your LSP for this to activate.
