@@ -7,7 +7,7 @@ local function reload_config()
 
 	-- reload modules
 	for name, _ in pairs(package.loaded) do
-		if name:match("^config") then
+		if name:match("^config") or name:match("^telescope") then
 			package.loaded[name] = nil
 		end
 	end
@@ -18,48 +18,46 @@ local function reload_config()
 end
 
 function M.setup()
+	-- dynamic config reload
+	keymapper.map("n", "<leader>rr", reload_config, "[R]eload Neovim config")
+
 	-- Clear highlights on search when pressing <Esc> in normal mode
 	keymapper.map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 	-- Save with Ctrl-s
-	keymapper.map("n", "<C-s>", vim.cmd.write)
-	keymapper.map("i", "<C-s>", vim.cmd.write)
+	keymapper.map("n", "<C-s>", vim.cmd.write, "Write Changes")
+	keymapper.map("i", "<C-s>", vim.cmd.write, "Write Changes")
 
-	-- dynamic config reload
-	vim.keymap.set("n", "<leader>rr", reload_config, { desc = "[R]eload Neovim config" })
+	keymapper.map("n", "<leader>q", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
 
-	vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
-	-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
-	-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
-	-- is not what someone will guess without a bit more experience.
-	--
 	-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 	-- or just use <C-\><C-n> to exit terminal mode
-	vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+	keymapper.map("t", "<Esc><Esc>", "<C-\\><C-n>", "Exit terminal mode")
 
 	-- Split management and navigation
-	vim.keymap.set("n", "<leader>vs", vim.cmd.vsplit, { desc = "Create [V]ertical Split" })
-	vim.keymap.set("n", "<leader>hs", vim.cmd.split, { desc = "Create [H]orizontal Split" })
-	vim.keymap.set("n", "<leader>cc", vim.cmd.quit, { desc = "[C]lose [C]urrent Window" })
-	vim.keymap.set("n", "<S-LEFT><S-LEFT>", "<C-w><Left>")
-	vim.keymap.set("n", "<S-RIGHT><S-RIGHT>", "<C-w><Right>")
-	vim.keymap.set("n", "<S-UP><S-UP>", "<C-w><Up>")
-	vim.keymap.set("n", "<S-DOWN><S-DOWN>", "<C-w><Down>")
+	keymapper.map("n", "<leader>vs", vim.cmd.vsplit, "Create [V]ertical Split")
+	keymapper.map("n", "<leader>hs", vim.cmd.split, "Create [H]orizontal Split")
+	keymapper.map("n", "<leader>cc", vim.cmd.quit, "[C]lose [C]urrent Window")
+	keymapper.map("n", "<S-LEFT><S-LEFT>", "<C-w><Left>")
+	keymapper.map("n", "<S-RIGHT><S-RIGHT>", "<C-w><Right>")
+	keymapper.map("n", "<S-UP><S-UP>", "<C-w><Up>")
+	keymapper.map("n", "<S-DOWN><S-DOWN>", "<C-w><Down>")
 
 	-- moving code blocks
-	vim.api.nvim_set_keymap("v", "<A-Down>", ":m '>+1<CR>gv=gv", {
-		noremap = true,
-	})
-	vim.api.nvim_set_keymap("v", "<A-Up>", ":m '<-2<CR>gv=gv", {
-		noremap = true,
-	})
-	vim.keymap.set("n", "<A-Up>", "<Up>ddp<Up>")
-	vim.keymap.set("n", "<A-Down>", "ddp")
+	keymapper.map("v", "<A-Down>", ":m '>+1<CR>gv=gv", "move code block down")
+	keymapper.map("v", "<A-Up>", ":m '<-2<CR>gv=gv", "move code block up")
+	keymapper.map("n", "<A-Up>", "<Up>ddp<Up>")
+	keymapper.map("n", "<A-Down>", "ddp")
 end
 
 function M.setup_telescope(builtin)
-	vim.keymap.set("n", "<C-o>", builtin.git_files, { desc = "Open File" })
+	-- open files list
+	keymapper.map("n", "<C-o>", function()
+		builtin.find_files(require("telescope.themes").get_dropdown({
+			winblend = 10,
+			previewer = false,
+		}))
+	end, "")
 
 	vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 	vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
