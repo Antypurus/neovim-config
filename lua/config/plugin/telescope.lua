@@ -20,7 +20,6 @@ pcall(require("telescope").load_extension, "ui-select")
 
 -- See `:help telescope.builtin`
 local builtin = require("telescope.builtin")
-keymaps.setup_telescope(builtin)
 
 -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
 -- it is better explained there). This allows easily switching between pickers if you prefer using something else!

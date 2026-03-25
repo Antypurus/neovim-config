@@ -48,6 +48,11 @@ function M.setup()
 	keymapper.map("v", "<A-Up>", ":m '<-2<CR>gv=gv", "move code block up")
 	keymapper.map("n", "<A-Up>", "<Up>ddp<Up>")
 	keymapper.map("n", "<A-Down>", "ddp")
+
+	-- format
+	keymapper.map("n", "<leader>ff", function()
+		require("conform").format({ async = true, lsp_format = "fallback" })
+	end, "[F]ormat buffer")
 end
 
 function M.setup_telescope(builtin)
@@ -141,16 +146,5 @@ function M.setup_lsp(event)
 		end, "[T]oggle Inlay [H]ints")
 	end
 end
-
-M.conform = {
-	{
-		"<leader>ff",
-		function()
-			require("conform").format({ async = true, lsp_format = "fallback" })
-		end,
-		mode = "",
-		desc = "[F]ormat buffer",
-	},
-}
 
 return M

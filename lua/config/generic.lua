@@ -6,8 +6,6 @@ vim.cmd.colorscheme("tokyonight-night")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-local keymaps = require("config.keymaps")
-
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 -- Make line numbers default
@@ -82,8 +80,6 @@ vim.diagnostic.config({
 	-- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
 	jump = { float = true },
 })
-
-keymaps.setup()
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

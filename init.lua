@@ -7,3 +7,4 @@ require("config.plugin.misc")
 
 local keymaps = require("config.keymaps")
 keymaps.setup()
+keymaps.setup_telescope(require("telescope.builtin"))
