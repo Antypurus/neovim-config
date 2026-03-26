@@ -28,11 +28,7 @@ function M.setup()
 	keymapper.map("n", "<C-s>", vim.cmd.write, "Write Changes")
 	keymapper.map("i", "<C-s>", vim.cmd.write, "Write Changes")
 
-	keymapper.map("n", "<leader>q", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
-
-	-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
-	-- or just use <C-\><C-n> to exit terminal mode
-	keymapper.map("t", "<Esc><Esc>", "<C-\\><C-n>", "Exit terminal mode")
+	keymapper.map("n", "<leader>qf", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
 
 	-- Split management and navigation
 	keymapper.map("n", "<leader>vs", vim.cmd.vsplit, "Create [V]ertical Split")
@@ -53,6 +49,9 @@ function M.setup()
 	keymapper.map("n", "<leader>ff", function()
 		require("conform").format({ async = true, lsp_format = "fallback" })
 	end, "[F]ormat buffer")
+
+	-- filetree
+	keymapper.map("n", "<C-n>", ":Neotree toggle filesystem right<CR>")
 end
 
 function M.setup_telescope(builtin)

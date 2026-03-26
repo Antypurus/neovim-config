@@ -4,6 +4,7 @@ require("config.plugin.telescope")
 require("config.plugin.git")
 require("config.plugin.lsp")
 require("config.plugin.misc")
+require("config.plugin.filetree")
 
 local keymaps = require("config.keymaps")
 keymaps.setup()

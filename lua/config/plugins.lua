@@ -58,6 +58,14 @@ require("lazy").setup({
 	{ "saghen/blink.cmp", dependencies = {
 		"L3MON4D3/LuaSnip",
 	} },
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 	{ "folke/todo-comments.nvim" },
 
 	-- themes
