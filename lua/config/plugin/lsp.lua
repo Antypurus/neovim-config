@@ -49,8 +49,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
-        -- this has to be done here because of the usage of th event
-        require('config.keymaps').setup_lsp(event)
+		-- this has to be done here because of the usage of th event
+		require("config.keymaps").setup_lsp(event)
 
 		-- The following two autocommands are used to highlight references of the
 		-- word under your cursor when your cursor rests there for a little while.
@@ -148,9 +148,11 @@ vim.list_extend(ensure_installed, {
 	-- You can add other tools here that you want Mason to install
 	clangd,
 	gopls,
+	lua_ls,
 })
 
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+require("mason").setup({})
 
 for name, server in pairs(servers) do
 	vim.lsp.config(name, server)
