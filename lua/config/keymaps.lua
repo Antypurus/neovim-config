@@ -63,28 +63,24 @@ function M.setup_telescope(builtin)
 		}))
 	end, "")
 
-	vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-	vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-	vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-	vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-	vim.keymap.set({ "n", "v" }, "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-	vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-	vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-	vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-	vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-	vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[S]earch [C]ommands" })
-	vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-
-	vim.keymap.set("n", "<leader>/", function()
+	keymapper.map("n", "<C-f>", function()
 		builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 			winblend = 10,
 			previewer = false,
 		}))
-	end, { desc = "[/] Fuzzily search in current buffer" })
+	end, "[/] Fuzzily search in current buffer")
+	keymapper.map("n", "<leader><C-f>", builtin.live_grep, "[S]earch by [G]rep")
 
-	vim.keymap.set("n", "<leader>sn", function()
-		builtin.find_files({ cwd = vim.fn.stdpath("config") })
-	end, { desc = "[S]earch [N]eovim files" })
+	keymapper.map("n", "<leader>sh", builtin.help_tags, "[S]earch [H]elp")
+	keymapper.map("n", "<leader>sk", builtin.keymaps, "[S]earch [K]eymaps")
+	keymapper.map("n", "<leader>sf", builtin.find_files, "[S]earch [F]iles")
+	keymapper.map("n", "<leader>ss", builtin.builtin, "[S]earch [S]elect Telescope")
+	keymapper.map({ "n", "v" }, "<leader>sw", builtin.grep_string, "[S]earch current [W]ord")
+	keymapper.map("n", "<leader>sd", builtin.diagnostics, "[S]earch [D]iagnostics")
+	keymapper.map("n", "<leader>sr", builtin.resume, "[S]earch [R]esume")
+	keymapper.map("n", "<leader>s.", builtin.oldfiles, '[S]earch Recent Files ("." for repeat)')
+	keymapper.map("n", "<leader>sc", builtin.commands, "[S]earch [C]ommands")
+	keymapper.map("n", "<leader><leader>", builtin.buffers, "[ ] Find existing buffers")
 end
 
 function M.setup_telescope_lsp(buf, builtin)
@@ -123,24 +119,19 @@ function M.setup_telescope_lsp(buf, builtin)
 end
 
 function M.setup_lsp(event)
-	local map = function(keys, func, desc, mode)
-		mode = mode or "n"
-		vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-	end
-
-	vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename Symbol" })
+	keymapper.map("n", "<F2>", vim.lsp.buf.rename, "Rename Symbol")
 
 	-- Execute a code action, usually your cursor needs to be on top of an error
 	-- or a suggestion from your LSP for this to activate.
-	map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+	keymapper.map({ "n", "x" }, "gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction")
 
 	-- WARN: This is not Goto Definition, this is Goto Declaration.
 	--  For example, in C this would take you to the header.
-	map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+	keymapper.map("n", "grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 	local client = vim.lsp.get_client_by_id(event.data.client_id)
 	if client and client:supports_method("textDocument/inlayHint", event.buf) then
-		map("<leader>th", function()
+		keymapper.map("n", "<leader>th", function()
 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 		end, "[T]oggle Inlay [H]ints")
 	end
