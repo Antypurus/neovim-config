@@ -5,6 +5,7 @@ require("config.plugin.git")
 require("config.plugin.lsp")
 require("config.plugin.misc")
 require("config.plugin.filetree")
+require("config.plugin.autocomplete")
 
 local keymaps = require("config.keymaps")
 keymaps.setup()
