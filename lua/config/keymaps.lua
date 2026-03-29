@@ -1,6 +1,8 @@
 local M = {}
 local keymapper = require("util.map")
 
+require("util.delete")
+
 local function reload_config()
 	-- clear keybinds
 	require("util.map").clear()
@@ -52,6 +54,9 @@ function M.setup()
 
 	-- filetree
 	keymapper.map("n", "<C-n>", ":Neotree toggle filesystem right<CR>")
+
+	-- word deletion
+	keymapper.map("i", "<A-BS>", DeletePreviousWord, "Delete Previsous Word")
 end
 
 function M.setup_telescope(builtin)
