@@ -47,6 +47,10 @@ function M.setup()
 	keymapper.map("n", "<A-Up>", "<Up>ddp<Up>")
 	keymapper.map("n", "<A-Down>", "ddp")
 
+	-- home button handling
+	keymapper.map("n", "<Home>", "^")
+	keymapper.map("i", "<Home>", "<Esc>^i")
+
 	-- format
 	keymapper.map("n", "<leader>ff", function()
 		require("conform").format({ async = true, lsp_format = "fallback" })
