@@ -24,6 +24,23 @@ require("blink.cmp").setup({
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		preset = "default",
+		["<Tab>"] = {
+			function(cmp)
+				if cmp.is_visible() then
+					return cmp.accept()
+				end
+			end,
+			"fallback",
+		},
+
+		["<S-Tab>"] = {
+			function(cmp)
+				if cmp.is_visible() then
+					return cmp.select_prev()
+				end
+			end,
+			"fallback",
+		},
 
 		-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 		--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
