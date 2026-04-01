@@ -66,9 +66,13 @@ function M.setup()
 
 	-- filetree
 	keymapper.map("n", "<C-n>", ":Neotree toggle filesystem right<CR>")
+	keymapper.map("n", "<F1>", ":Neotree focus filesystem right<CR>")
 
 	-- word deletion
 	keymapper.map("i", "<A-BS>", DeletePreviousWord, "Delete Previsous Word")
+
+	-- swap between header and cpp
+	keymapper.map("n", "<F4>", ":A<CR>")
 end
 
 function M.setup_telescope(builtin)

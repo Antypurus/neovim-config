@@ -31,9 +31,6 @@ local lazy_ui = {
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 require("lazy").setup({
-	{ "NMAC427/guess-indent.nvim", opts = {} },
-	{ "lewis6991/gitsigns.nvim" },
-	{ "folke/which-key.nvim" },
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
@@ -43,6 +40,8 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
+
+	--lsp
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -54,10 +53,13 @@ require("lazy").setup({
 	},
 	{ "nvim-treesitter/nvim-treesitter" },
 	{ "nvim-mini/mini.nvim" },
-	{ "stevearc/conform.nvim" },
+
+	-- autocomplete
 	{ "saghen/blink.cmp", dependencies = {
 		"L3MON4D3/LuaSnip",
 	} },
+
+	-- filetree
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		dependencies = {
@@ -66,7 +68,22 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
+
+	--git
+	{ "lewis6991/gitsigns.nvim" },
+
+	-- formatting
+	{ "stevearc/conform.nvim" },
+	{ "NMAC427/guess-indent.nvim", opts = {} },
+
+	-- misc
+	{ "folke/which-key.nvim" },
 	{ "folke/todo-comments.nvim" },
+	{ "theprimeagen/harpoon" },
+	{ "kylechui/nvim-surround" },
+	{ "vim-scripts/a.vim" },
+	{ "wakatime/vim-wakatime" },
+	{ "andweeb/presence.nvim" },
 
 	-- themes
 	{ "folke/tokyonight.nvim" },
