@@ -2,13 +2,16 @@
 local parsers = {
 	"bash",
 	"c",
+	"css",
 	"diff",
 	"html",
+	"javascript",
 	"lua",
 	"luadoc",
 	"markdown",
 	"markdown_inline",
 	"query",
+	"scss",
 	"vim",
 	"vimdoc",
 }
@@ -88,8 +91,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --  See `:help lsp-config` for information about keys and how to configure
 ---@type table<string, vim.lsp.Config>
 local servers = {
+	cssls = {},
 	gopls = {},
+	html = {},
 	pyright = {},
+	ts_ls = {},
 	clangd = {
 		cmd = {
 			"clangd",
@@ -101,7 +107,6 @@ local servers = {
 	},
 
 	-- Special Lua Config, as recommended by neovim help docs
-	stylua = {}, -- Used to format Lua code
 	lua_ls = {
 		on_init = function(client)
 			if client.workspace_folders then
@@ -136,17 +141,15 @@ local servers = {
 	},
 }
 
--- Ensure the servers and tools above are installed
-local ensure_installed = vim.tbl_keys(servers or {})
-vim.list_extend(ensure_installed, {
-	-- You can add other tools here that you want Mason to install
-	clangd,
-	gopls,
-	lua_ls,
-})
-
-require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 require("mason").setup({})
+require("mason-lspconfig").setup({
+	ensure_installed = vim.tbl_keys(servers),
+})
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"stylua",
+	},
+})
 
 for name, server in pairs(servers) do
 	vim.lsp.config(name, server)
