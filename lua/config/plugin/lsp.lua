@@ -14,6 +14,9 @@ local parsers = {
 	"scss",
 	"vim",
 	"vimdoc",
+	"go",
+	"gosum",
+	"gomod",
 }
 
 require("nvim-treesitter").install(parsers)
