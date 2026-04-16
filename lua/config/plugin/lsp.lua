@@ -102,7 +102,9 @@ local servers = {
 	postgres_lsp = {},
 	sqlls = {},
 	jsonls = {},
-	clang = {
+	docker_language_server = {},
+	docker_compose_language_service = {},
+	clangd = {
 		cmd = {
 			"clangd",
 			"--header-insertion=never",
