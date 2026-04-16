@@ -99,7 +99,10 @@ local servers = {
 	html = {},
 	pyright = {},
 	ts_ls = {},
-	clangd = {
+	postgres_lsp = {},
+	sqlls = {},
+	jsonls = {},
+	clang = {
 		cmd = {
 			"clangd",
 			"--header-insertion=never",
