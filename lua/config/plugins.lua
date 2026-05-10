@@ -55,9 +55,13 @@ require("lazy").setup({
 	{ "nvim-mini/mini.nvim" },
 
 	-- autocomplete
-	{ "saghen/blink.cmp", dependencies = {
-		"L3MON4D3/LuaSnip",
-	} },
+	{
+		"saghen/blink.cmp",
+		dependencies = {
+			"L3MON4D3/LuaSnip",
+		},
+		version = '1.*',
+	},
 
 	-- filetree
 	{
