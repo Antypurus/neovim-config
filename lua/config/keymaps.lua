@@ -73,6 +73,10 @@ function M.setup()
 
 	-- swap between header and cpp
 	keymapper.map("n", "<F4>", ":A<CR>")
+
+	-- generate documentation
+	local neogen = require('neogen')
+	keymapper.map({"n", "i"}, "<leader>dg", neogen.generate)
 end
 
 function M.setup_telescope(builtin)

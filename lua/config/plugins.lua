@@ -80,6 +80,14 @@ require("lazy").setup({
 	{ "stevearc/conform.nvim" },
 	{ "NMAC427/guess-indent.nvim", opts = {} },
 
+	-- documentation generation
+	{
+        "danymat/neogen",
+        config = true,
+        -- Uncomment next line if you want to follow only stable versions
+        -- version = "*"
+	},
+
 	-- misc
 	{ "folke/which-key.nvim" },
 	{ "folke/todo-comments.nvim" },
