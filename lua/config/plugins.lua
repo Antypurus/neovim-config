@@ -60,7 +60,7 @@ require("lazy").setup({
 		dependencies = {
 			"L3MON4D3/LuaSnip",
 		},
-		version = '1.*',
+		version = "1.*",
 	},
 
 	-- filetree
@@ -82,10 +82,15 @@ require("lazy").setup({
 
 	-- documentation generation
 	{
-        "danymat/neogen",
-        config = true,
-        -- Uncomment next line if you want to follow only stable versions
-        -- version = "*"
+		"danymat/neogen",
+		config = true,
+		-- Uncomment next line if you want to follow only stable versions
+		-- version = "*"
+	},
+
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
 	},
 
 	-- misc
