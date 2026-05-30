@@ -88,11 +88,6 @@ require("lazy").setup({
 		-- version = "*"
 	},
 
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-	},
-
 	-- misc
 	{ "folke/which-key.nvim" },
 	{ "folke/todo-comments.nvim" },
