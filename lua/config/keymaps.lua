@@ -1,6 +1,55 @@
 local M = {}
 local keymapper = require("util.map")
 
+local function jump_to_function(direction)
+	local ok, parser = pcall(vim.treesitter.get_parser, 0)
+	if not ok or not parser then
+		local key = direction > 0 and "]m" or "[m"
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", false)
+		return
+	end
+
+	local tree = parser:parse()[1]
+	local root = tree:root()
+	local cur_row = vim.api.nvim_win_get_cursor(0)[1] - 1
+
+	local positions = {}
+	local function collect(node)
+		local ntype = node:type()
+		if ntype:find("function") or ntype:find("method") or ntype:find("arrow") then
+			local start_row, start_col = node:start()
+			table.insert(positions, { row = start_row, col = start_col })
+		end
+		for child in node:iter_children() do
+			collect(child)
+		end
+	end
+	collect(root)
+
+	table.sort(positions, function(a, b)
+		return a.row < b.row or (a.row == b.row and a.col < b.col)
+	end)
+
+	if direction > 0 then
+		for _, pos in ipairs(positions) do
+			if pos.row > cur_row then
+				vim.api.nvim_win_set_cursor(0, { pos.row + 1, pos.col })
+				return
+			end
+		end
+	else
+		local target = nil
+		for _, pos in ipairs(positions) do
+			if pos.row < cur_row then
+				target = pos
+			end
+		end
+		if target then
+			vim.api.nvim_win_set_cursor(0, { target.row + 1, target.col })
+		end
+	end
+end
+
 require("util.delete")
 
 local function reload_config()
@@ -54,6 +103,10 @@ function M.setup()
 	keymapper.map("v", "<A-Up>", ":m '<-2<CR>gv=gv", "move code block up")
 	keymapper.map("n", "<A-Up>", "<Up>ddp<Up>")
 	keymapper.map("n", "<A-Down>", "ddp")
+
+	-- jump between functions
+	keymapper.map("n", "<C-Down>", function() jump_to_function(1) end, "Jump to next function")
+	keymapper.map("n", "<C-Up>", function() jump_to_function(-1) end, "Jump to previous function")
 
 	-- home button handling
 	keymapper.map("n", "<Home>", "^")
