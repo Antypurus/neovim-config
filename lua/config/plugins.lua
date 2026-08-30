@@ -99,4 +99,11 @@ require("lazy").setup({
 
 	-- themes
 	{ "folke/tokyonight.nvim" },
+	{ "kepano/flexoki-neovim", name = "flexoki" },
+	{ "nyoom-engineering/nyoom.nvim" },
+	{ "bluz71/vim-moonfly-colors", name = "moonfly" },
+	{ "EdenEast/nightfox.nvim" }, -- lazy
+	{ "marko-cerovac/material.nvim" },
+	{ "shaunsingh/nord.nvim" },
+	{ "AlexvZyl/nordic.nvim" },
 }, lazy_ui)

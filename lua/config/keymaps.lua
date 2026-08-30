@@ -105,8 +105,12 @@ function M.setup()
 	keymapper.map("n", "<A-Down>", "ddp")
 
 	-- jump between functions
-	keymapper.map("n", "<C-Down>", function() jump_to_function(1) end, "Jump to next function")
-	keymapper.map("n", "<C-Up>", function() jump_to_function(-1) end, "Jump to previous function")
+	keymapper.map("n", "<C-Down>", function()
+		jump_to_function(1)
+	end, "Jump to next function")
+	keymapper.map("n", "<C-Up>", function()
+		jump_to_function(-1)
+	end, "Jump to previous function")
 
 	-- home button handling
 	keymapper.map("n", "<Home>", "^")
@@ -119,7 +123,7 @@ function M.setup()
 
 	-- filetree
 	keymapper.map("n", "<C-n>", ":Neotree toggle filesystem right<CR>")
-	keymapper.map("n", "<F1>", ":Neotree focus filesystem right<CR>")
+	keymapper.map("n", "<F1>", ":Neotree focus filesystem right reveal<CR>")
 
 	-- word deletion
 	keymapper.map("i", "<A-BS>", DeletePreviousWord, "Delete Previsous Word")
@@ -128,8 +132,8 @@ function M.setup()
 	keymapper.map("n", "<F4>", ":A<CR>")
 
 	-- generate documentation
-	local neogen = require('neogen')
-	keymapper.map({"n", "i"}, "<leader>dg", neogen.generate)
+	local neogen = require("neogen")
+	keymapper.map({ "n", "i" }, "<leader>dg", neogen.generate)
 end
 
 function M.setup_telescope(builtin)

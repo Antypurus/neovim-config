@@ -19,6 +19,11 @@ require("telescope").setup({
 			-- the default case_mode is "smart_case"
 		},
 	},
+	pickers = {
+		colorscheme = {
+			enable_preview = true,
+		},
+	},
 })
 
 -- Enable Telescope extensions if they are installed
