@@ -133,7 +133,7 @@ function M.setup()
 
 	-- generate documentation
 	local neogen = require("neogen")
-	keymapper.map({ "n", "i" }, "<leader>dg", neogen.generate)
+	keymapper.map({ "n" }, "<leader>dg", neogen.generate)
 end
 
 function M.setup_telescope(builtin)
