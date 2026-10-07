@@ -81,6 +81,9 @@ function M.setup()
 
 	keymapper.map("n", "<leader>qf", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
 
+	-- disable the Insert key (used as Discord push-to-talk) so it does nothing in nvim
+	keymapper.map({ "n", "i", "v" }, "<Insert>", "<Nop>")
+
 	-- Split management and navigation
 	keymapper.map("n", "<leader>vs", vim.cmd.vsplit, "Create [V]ertical Split")
 	keymapper.map("n", "<leader>hs", vim.cmd.split, "Create [H]orizontal Split")
